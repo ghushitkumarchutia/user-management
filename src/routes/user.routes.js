@@ -14,7 +14,7 @@ router.get("/", getUsers);
 
 router.post("/", validate(createUserDTO), createUser);
 
-router.patch("/:id", validate(updateUserDTO), updateUser);
+router.put("/:id", validate(updateUserDTO), updateUser);
 
 router.delete("/:id", deleteUser);
 

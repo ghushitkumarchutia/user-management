@@ -1,14 +1,6 @@
-# LogoForge - Git Ignore File
-
-# =========================
-# Dependencies
-# =========================
 node_modules/
 */node_modules/
 
-# =========================
-# Environment Variables
-# =========================
 .env
 .env.local
 .env.development.local
@@ -17,17 +9,11 @@ node_modules/
 *.env
 !.env.example
 
-# =========================
-# Build Outputs
-# =========================
 dist/
 build/
 out/
 .output/
 
-# =========================
-# Logs
-# =========================
 logs/
 *.log
 npm-debug.log*
@@ -36,9 +22,6 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# =========================
-# OS Files
-# =========================
 .DS_Store
 .DS_Store?
 ._*
@@ -50,43 +33,22 @@ Thumbs.db
 *.swo
 *~
 
-# =========================
-# IDE & Editor Files
-# =========================
 .idea/
 .vscode/
 *.sublime-project
 *.sublime-workspace
 *.code-workspace
 
-# =========================
-# Testing
-# =========================
 coverage/
 .nyc_output/
 
-# =========================
-# Misc
-# =========================
 *.local
 *.tgz
 .cache/
 .temp/
 .tmp/
 
-# =========================
-# Vite
-# =========================
 *.local
 
-# =========================
-# MongoDB
-# =========================
 data/
 mongodb-data/
-
-# =========================
-# Uploads (if any)
-# =========================
-uploads/
-!uploads/.gitkeep

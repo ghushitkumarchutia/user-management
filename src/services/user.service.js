@@ -1,6 +1,14 @@
 let users = [];
 
-export const getUsers = async () => users;
+export const getUsers = async (filters = {}) => {
+  let result = users;
+
+  if (filters.isActive !== undefined) {
+    result = result.filter((u) => u.isActive === filters.isActive);
+  }
+
+  return result;
+};
 
 export const createUser = async (data) => {
   const newUser = { id: Date.now().toString(), ...data };

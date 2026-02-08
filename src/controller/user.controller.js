@@ -2,7 +2,26 @@ import * as userService from "../services/user.service.js";
 
 export const getUsers = async (req, res) => {
   try {
-    const users = await userService.getUsers();
+    let isActive;
+
+    if (req.query.isActive !== undefined) {
+      const rawIsActive = String(req.query.isActive).toLowerCase();
+      if (rawIsActive !== "true" && rawIsActive !== "false") {
+        return res.status(400).json({
+          message: "Validation Error",
+          error: [
+            {
+              path: ["isActive"],
+              message: 'Query param "isActive" must be "true" or "false"',
+            },
+          ],
+        });
+      }
+
+      isActive = rawIsActive === "true";
+    }
+
+    const users = await userService.getUsers({ isActive });
     res.json(users);
   } catch (error) {
     res.status(500).json({ error: error.message });

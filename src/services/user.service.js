@@ -1,34 +1,30 @@
-let users = [];
+import { User } from "../models/user.model.js";
 
 export const getUsers = async (filters = {}) => {
-  let result = users;
+  const query = {};
 
   if (filters.isActive !== undefined) {
-    result = result.filter((u) => u.isActive === filters.isActive);
+    query.isActive = filters.isActive;
   }
 
-  return result;
+  return User.find(query).sort({ createdAt: -1 });
 };
 
 export const createUser = async (data) => {
-  const newUser = { id: Date.now().toString(), ...data };
-  users.push(newUser);
-  return newUser;
+  return User.create(data);
 };
 
 export const updateUser = async (id, data) => {
-  const index = users.findIndex((u) => u.id === id);
-  if (index === -1) return null;
+  const updated = await User.findByIdAndUpdate(id, data, {
+    new: true,
+    runValidators: true,
+  });
 
-  users[index] = { ...users[index], ...data };
-  return users[index];
+  return updated;
 };
 
 export const deleteUser = async (id) => {
-  const index = users.findIndex((u) => u.id === id);
-  if (index === -1) return null;
-
-  const [deleted] = users.splice(index, 1);
+  const deleted = await User.findByIdAndDelete(id);
   return deleted;
 };
 

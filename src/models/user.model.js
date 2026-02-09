@@ -5,22 +5,15 @@ const userSchema = new mongoose.Schema(
     name: {
       type: String,
       required: true,
-      trim: true,
-      minlength: 3,
     },
     email: {
       type: String,
       required: true,
-      trim: true,
-      lowercase: true,
       unique: true,
     },
     phone: {
       type: String,
       required: true,
-      trim: true,
-      minlength: 7,
-      maxlength: 20,
       unique: true,
     },
     role: {
@@ -44,7 +37,7 @@ const userSchema = new mongoose.Schema(
         return ret;
       },
     },
-  }
+  },
 );
 
 export const User = mongoose.model("User", userSchema);
